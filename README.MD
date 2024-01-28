@@ -1,4 +1,44 @@
 # Commands
+
 npx hardhat run scripts/deploySub.js --network polygonMumbai
 
-npx hardhat verify --network polygonMumbai 0x9C5B42e650a040DAa6347cfBaCa0d9E677aB1275 "0x8C7382F9D8f56b33781fE506E897a4F1e2d17255" "0x326C977E6efc84E512bB9C30f76E30c160eD06FB" "0x6e75b569a01ef56d18cab6a8e71e6600d6ce853834d4a5748b720d06f878b3a4" "0x80273525B1548EeA1f211f4218Cf30c1a7C86b25" "1000000000000000000000000" "100" "0xF450B38cccFdcfAD2f98f7E4bB533151a2fB00E9"
+npx hardhat verify --network polygonMumbai "0x1b9469dabA419E2e83BcB0831c0E31fa9B6401F2" "0x8C7382F9D8f56b33781fE506E897a4F1e2d17255" "0
+x326C977E6efc84E512bB9C30f76E30c160eD06FB" "0x6e75b569a01ef56d18cab6a8e71e6600d6ce853834d4a5748b720d06f878b3a4" "0x80273525B1548EeA1f211f4218Cf30c1a7C86b25" "10000000000000000000000" "0xF450B38cccFdcfAD2f98f7E4bB533151a2fB00E9" "0xF450B38cccFdcfAD2f98f7E4bB533151a2fB00E9" "0x0000000000000000000000000000000000000000" 10 50 "0x6Bd3a2F6b91830E964a5b3906E0
+DBF92a5A5Cc53"
+
+npx hardhat verify --contract contracts/LotteryBetaNFT.sol:LotteryBetaNFT 0x5971080C1Bfb3FAB918EAeeA2d2f6086ccb5747E --network polygon
+
+# IPFS
+
+LotteryNFT Image CID: bafybeiekdvbw7dcnrcg4cjkfnbbam4bt3jnzhafxef2vuvdlsuhpciafzi
+LotteryNFT Image IPFS URL: ipfs://bafybeiekdvbw7dcnrcg4cjkfnbbam4bt3jnzhafxef2vuvdlsuhpciafzi
+LotteryNFT Image Gateway URL: https://nftstorage.link/ipfs/bafybeiekdvbw7dcnrcg4cjkfnbbam4bt3jnzhafxef2vuvdlsuhpciafzi
+
+LotteryNFT Metadata CID:
+bafybeidxbgf3ra7qeol3pb7b6soj7evouexz2cogutqxgfrkowec22bl6y
+LotteryNFT Metadata IPFS URL:
+ipfs://bafybeidxbgf3ra7qeol3pb7b6soj7evouexz2cogutqxgfrkowec22bl6y
+LotteryNFT Image Gateway URL:
+https://nftstorage.link/ipfs/bafybeidxbgf3ra7qeol3pb7b6soj7evouexz2cogutqxgfrkowec22bl6y
+
+LotteryNFT Beta Image CID: bafybeigdpqdy67tnc6doxxw7r77cg34r6zps5isheyxtsumgizw633ylsa
+LotteryNFT Beta Image IPFS URL: ipfs://bafybeigdpqdy67tnc6doxxw7r77cg34r6zps5isheyxtsumgizw633ylsa
+LotteryNFT Beta Image Gateway URL: https://nftstorage.link/ipfs/bafybeigdpqdy67tnc6doxxw7r77cg34r6zps5isheyxtsumgizw633ylsa
+
+LotteryNFT Beta Metadata CID:
+bafybeibvx4fxdyjardadufxinantbkzdchko5dewljto46xunfo72fpsje
+LotteryNFT Beta Metadata IPFS URL:
+ipfs://bafybeibvx4fxdyjardadufxinantbkzdchko5dewljto46xunfo72fpsje
+LotteryNFT Beta Image Gateway URL:
+https://nftstorage.link/ipfs/bafybeibvx4fxdyjardadufxinantbkzdchko5dewljto46xunfo72fpsje
+
+LotteryNFT Grand Opening Image CID: bafybeiefrkq5t3nmxyjbgkoufuw5cjg6ywpgya4fxuuiiz6colbyu3oa5y
+LotteryNFT Grand Opening Image IPFS URL: ipfs://bafybeiefrkq5t3nmxyjbgkoufuw5cjg6ywpgya4fxuuiiz6colbyu3oa5y
+LotteryNFT Grand Opening Image Gateway URL: https://nftstorage.link/ipfs/bafybeiefrkq5t3nmxyjbgkoufuw5cjg6ywpgya4fxuuiiz6colbyu3oa5y
+
+LotteryNFT Grand Opening Metadata CID:
+bafybeigvlosw7rxngzme75lz7tndzxbijuv4ki62b57bmhsaeytltybk5m
+LotteryNFT Grand Opening Metadata IPFS URL:
+ipfs://bafybeigvlosw7rxngzme75lz7tndzxbijuv4ki62b57bmhsaeytltybk5m
+LotteryNFT Grand Opening Gateway URL:
+https://nftstorage.link/ipfs/bafybeigvlosw7rxngzme75lz7tndzxbijuv4ki62b57bmhsaeytltybk5m

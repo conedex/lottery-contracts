@@ -58,17 +58,22 @@ module.exports = {
   networks: {
     sepolia: {
       url: process.env.REACT_APP_SEPOLIA_URL,
-      accounts: [process.env.REACT_APP_PRIVATE_KEY],
+      accounts: [process.env.REACT_APP_PRIVATE_KEY_TEST],
     },
     polygonMumbai: {
       url: process.env.REACT_APP_MUMBAI_URL,
-      accounts: [process.env.REACT_APP_PRIVATE_KEY],
+      accounts: [process.env.REACT_APP_PRIVATE_KEY_TEST],
+    },
+    polygon: {
+      url: process.env.REACT_APP_POLYGON_URL,
+      accounts: [process.env.REACT_APP_PRIVATE_KEY_MAIN],
     },
   },
   etherscan: {
     apiKey: {
       sepolia: process.env.REACT_APP_ETHERSCAN_KEY,
       polygonMumbai: process.env.REACT_APP_POLYGONSCAN_KEY,
+      polygon: process.env.REACT_APP_POLYGONSCAN_KEY,
     },
   },
   paths: {
