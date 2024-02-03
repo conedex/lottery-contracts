@@ -7,8 +7,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Pausable.sol";
 import "./LotteryNFT.sol";
 
-contract Lottery is VRFConsumerBase, Ownable, Pausable {
-
+contract MockLottery10 is VRFConsumerBase, Ownable, Pausable {
     LotteryWinnerNFT public nftContract;
     IERC20 public token;
     uint256 public tokenPerEntry;
@@ -21,7 +20,7 @@ contract Lottery is VRFConsumerBase, Ownable, Pausable {
     uint256 public currentPool;
     uint256 public nextUserId;
     uint256 public generatedRandomNumber;
-    uint256 public currentLotteryVersion = 1;
+    uint256 public currentLotteryVersion = 3;
     uint256 public winnerFee;
     uint256 public coneTreasuryFee;
     mapping(address => bool) public admins;
@@ -51,8 +50,8 @@ contract Lottery is VRFConsumerBase, Ownable, Pausable {
         address _rewardWallet,
         address _admin,
         address _coneTreasury,
-        uint256 _winnerFee, //The multiplier for the winner's fee for example 10% = 10
-        uint256 _coneTreasuryFee, //The multiplier for the cone treasury fee for example 50% = 50. Should be set to 50 when half of the winnerFee should be sent to the Cone Treasury
+        uint256 _winnerFee,
+        uint256 _coneTreasuryFee,
         address _nftContract
     ) VRFConsumerBase(_vrfCoordinator, _link) Ownable(msg.sender) {
         keyHash = _keyHash;
@@ -83,7 +82,7 @@ contract Lottery is VRFConsumerBase, Ownable, Pausable {
         userLastParticipationVersion[msg.sender] = currentLotteryVersion;
     }
 
-    function declareWinner() external onlyAdmin whenNotPaused {
+    function declareWinner() external onlyAdmin {
         require(nextUserId > 0, "No participants in the lottery");
         require(generatedRandomNumber != 0, "Random number must be generated first");
         uint256 winnerId = generatedRandomNumber % nextUserId;
@@ -97,17 +96,13 @@ contract Lottery is VRFConsumerBase, Ownable, Pausable {
         require(token.transfer(rewardWallet, rewardWalletReward), "Transfer to reward wallet failed");
         require(token.transfer(coneTreasury, coneTreasuryReward), "Transfer to cone treasury failed");
 
-
         lastPrize = prize;
         winnings[lastWinner] += prize;
         totalWinnings[lastWinner] += prize;
         versionWinners[currentLotteryVersion] = lastWinner;
         emit WinnerSelected(lastWinner, prize, currentLotteryVersion);
 
-        for (uint256 i = 0; i < nextUserId; i++) {
-            userContributions[userIds[i]] = 0;
-        }
-
+        // Resetting for the next lottery
         currentPool = 0;
         nextUserId = 0;
         generatedRandomNumber = 0;
@@ -124,6 +119,14 @@ contract Lottery is VRFConsumerBase, Ownable, Pausable {
     function generateRandomNumber() external onlyAdmin {
         require(LINK.balanceOf(address(this)) >= fee, "Not enough LINK to pay fee");
         requestRandomness(keyHash, fee);
+    }
+
+    function getUserContributions(address user) external view returns (uint256) {
+        if (userLastParticipationVersion[user] == currentLotteryVersion) {
+            return userContributions[user];
+        } else {
+            return 0;
+        }
     }
 
     function setTokenPerEntry(uint256 _tokenPerEntry) external onlyOwner {
@@ -210,7 +213,6 @@ contract Lottery is VRFConsumerBase, Ownable, Pausable {
     
     function winnerNft() public onlyAdmin {
         nftContract.mint(lastWinner);
-
     }
 
     function withdrawTokens() external onlyOwner whenPaused {
@@ -219,5 +221,11 @@ contract Lottery is VRFConsumerBase, Ownable, Pausable {
         require(token.transfer(msg.sender, balance), "Transfer failed");
     }
 
-    
+    // Add this function in your Lottery contract for testing purposes
+
+    function setGeneratedRandomNumberForTesting(uint256 _randomNumber) external onlyOwner {
+        generatedRandomNumber = _randomNumber;
+    }
+
 }
+

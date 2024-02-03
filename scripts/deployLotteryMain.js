@@ -17,7 +17,7 @@ async function main() {
     "0x5af0b2d05e82676BDe59BB95C861fd4688B9D805", //Cone Treasury
     20, // 20% rewardWallet Amount deducted from prize money
     25, // 25% ConeHead Treeasury amount deduction from rewardWallet amount
-    "0xA2B35dFA644464e031d3a4BE36FD38Ad9BA896B6"
+    "0xA2B35dFA644464e031d3a4BE36FD38Ad9BA896B6" //NFT Address
   );
 
   await lottery.deployed();

@@ -56,6 +56,11 @@ module.exports = {
     ],
   },
   networks: {
+    hardhat: {
+      forking: {
+        url: "https://polygon-bor.publicnode.com",
+      },
+    },
     sepolia: {
       url: process.env.REACT_APP_SEPOLIA_URL,
       accounts: [process.env.REACT_APP_PRIVATE_KEY_TEST],
